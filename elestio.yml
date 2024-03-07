@@ -6,7 +6,10 @@ ports:
     targetIP: "172.17.0.1"
     public: true
     path: "/"
-    isAuth: false
+    isAuth: true
+    login: "admin"
+    password: "random_password"
+    loginTitle: "VictoriaMetrics"
   - protocol: "HTTPS"
     targetProtocol: "HTTP"
     listeningPort: "33110"
@@ -22,10 +25,6 @@ environments:
     value: "random_password"
   - key: "ADMIN_EMAIL"
     value: "[EMAIL]"
-  - key: "DOMAIN"
-    value: "[CI_CD_DOMAIN]"
-  - key: "MAIL_FROM"
-    value: "[DOMAIN]@vm.elestio.app"
 config:
   runTime: "dockerCompose"
   version: ""
@@ -44,14 +43,6 @@ lifeCycleConfig:
   postRestoreCommand: "./scripts/postRestore.sh"
   postDeployCommand: "./scripts/postDeploy.sh"
 webUI:
-  - url: "https://[CI_CD_DOMAIN]/vmui"
-    label: "VictoriaMetrics VMUI"
-    login: "[ADMIN_EMAIL]"
-    password: "[ADMIN_PASSWORD]"
-  - url: "https://[CI_CD_DOMAIN]/vmalert"
-    label: "VictoriaMetrics VMALERT"
-    login: "[ADMIN_EMAIL]"
-    password: "[ADMIN_PASSWORD]"
   - url: "https://[CI_CD_DOMAIN]:33110"
     label: "Grafana"
     login: "[ADMIN_EMAIL]"

@@ -41,6 +41,9 @@ services:
       - "victoriametrics"
     ports:
       - 172.17.0.1:44953:3000
+    environment:
+      - GF_SECURITY_ADMIN_USER=${ADMIN_EMAIL}
+      - GF_SECURITY_ADMIN_PASSWORD=${ADMIN_PASSWORD}
     volumes:
       - ./grafanadata:/var/lib/grafana
       - ./config/provisioning/datasources/prometheus-datasource:/etc/grafana/provisioning/datasources
