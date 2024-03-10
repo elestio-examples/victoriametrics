@@ -13,13 +13,19 @@ Deploy VictoriaMetrics server with CI/CD on Elestio
 You can open VictoriaMetrics UI here:
 
     URL: https://[CI_CD_DOMAIN]
+    login: "admin"
+    password: [ADMIN_PASSWORD]
+
+You can open Grafana here:
+
+    URL: https://[CI_CD_DOMAIN]:33110
     email: [ADMIN_EMAIL]
     password: [ADMIN_PASSWORD]
 
-# System Administrator
+# Querying VictoriaMetrics with cURL
 
-Your account is set as Tenant Administrator, like that, you will be able to create new customer.
-If you want to connect as System Administrator, use these credentials:
+VictoriaMetrics requires basic authentication for querying data.
 
-    email: admin@[CI_CD_DOMAIN]
-    password: [ADMIN_PASSWORD]
+Use the following cURL command template to make a query:
+
+    curl -u admin:[ADMIN_PASSWORD] https://[CI_CD_DOMAIN]:443/prometheus/api/v1/query -d 'query=vm_http_request_errors_total'
