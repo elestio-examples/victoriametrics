@@ -14,7 +14,7 @@ services:
       - "--promscrape.config=/etc/prometheus/prometheus.yml"
       - "--remoteWrite.url=http://victoriametrics:8428/api/v1/write"
   victoriametrics:
-    image: victoriametrics/victoria-metrics:v1.99.0
+    image: victoriametrics/victoria-metrics:${SOFTWARE_VERSION_TAG}
     restart: always
     ports:
       - 172.17.0.1:60689:8428
