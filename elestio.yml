@@ -20,7 +20,7 @@ ports:
     isAuth: false
 environments:
   - key: "SOFTWARE_VERSION_TAG"
-    value: "v1.99.0"
+    value: "stable"
   - key: "ADMIN_PASSWORD"
     value: "random_password"
   - key: "ADMIN_EMAIL"
